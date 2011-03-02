@@ -6,16 +6,7 @@ ScanBot = BaseRobot;
 ScanBot.run = function() {
 	var robot = this;
 	robot.shoot();
-
-	robot.move_forward(100);
-	robot.turn_left(45);
-}
-
-/*
-ScanBot.run = function() {
-	var robot = this;
-	robot.shoot();
-
+	
 	robot.turn_turret_right(45);
 	robot.move_forward(Math.random()*400, {
 		DONE: function() {
@@ -25,7 +16,7 @@ ScanBot.run = function() {
 					robot.shoot();
 					robot._run();
 				}
-			});
+			}); 
 		},
 		ENEMY_COLLIDE: function() {
 			robot.shoot();
@@ -34,9 +25,6 @@ ScanBot.run = function() {
 					robot._run();
 				},
 				WALL_COLLIDE: function() {
-					robot._run();
-				},
-				ENEMY_COLLIDE: function() {
 					robot._run();
 				}
 			});
@@ -51,5 +39,3 @@ ScanBot.run = function() {
 		}
 	});
 }
-
-*/
