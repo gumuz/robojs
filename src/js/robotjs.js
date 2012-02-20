@@ -348,11 +348,11 @@ $(document).ready(function() {
 				
 				battle_manager._ctx.strokeText(robot["id"] + " (" + robot["health"] + ")", robot["x"]-20,robot["y"]+35);
 //				/*
-//				battle_manager._ctx.fillStyle = "green";
-//				battle_manager._ctx.fillRect(robot["x"]-20,robot["y"]+35, robot["health"], 5);
-//				battle_manager._ctx.fillStyle = "red";
-//				battle_manager._ctx.fillRect(robot["x"]-20+robot["health"],robot["y"]+35, 25-robot["health"], 5);
-//				battle_manager._ctx.fillStyle = "black";
+				battle_manager._ctx.fillStyle = "green";
+				battle_manager._ctx.fillRect(robot["x"]-20,robot["y"]+35, robot["health"], 5);
+				battle_manager._ctx.fillStyle = "red";
+				battle_manager._ctx.fillRect(robot["x"]-20+robot["health"],robot["y"]+35, 25-robot["health"], 5);
+				battle_manager._ctx.fillStyle = "black";
 //				*/
 			}
 			for(var e=0; e<battle_manager._explosions.length; e++) {
@@ -371,7 +371,7 @@ $(document).ready(function() {
 	
 //	BattleManager.init(ctx, ["js/scan-bot.js"]);
 //	BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js","js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js"]);
-	BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/scan-bot.js", "js/test-robot1.js", "js/test-robot2.js", "js/scan-bot.js"]);
+	BattleManager.init(ctx, ["js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js"]);
 	BattleManager.run();
 	
 });
