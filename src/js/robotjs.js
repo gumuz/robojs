@@ -347,20 +347,20 @@ $(document).ready(function() {
 				battle_manager._ctx.closePath();
 				
 				battle_manager._ctx.strokeText(robot["id"] + " (" + robot["health"] + ")", robot["x"]-20,robot["y"]+35);
-				/*
-				battle_manager._ctx.fillStyle = "green";
-				battle_manager._ctx.fillRect(robot["x"]-20,robot["y"]+35, robot["health"], 5);
-				battle_manager._ctx.fillStyle = "red";
-				battle_manager._ctx.fillRect(robot["x"]-20+robot["health"],robot["y"]+35, 25-robot["health"], 5);
-				battle_manager._ctx.fillStyle = "black";
-				*/
+//				/*
+//				battle_manager._ctx.fillStyle = "green";
+//				battle_manager._ctx.fillRect(robot["x"]-20,robot["y"]+35, robot["health"], 5);
+//				battle_manager._ctx.fillStyle = "red";
+//				battle_manager._ctx.fillRect(robot["x"]-20+robot["health"],robot["y"]+35, 25-robot["health"], 5);
+//				battle_manager._ctx.fillStyle = "black";
+//				*/
 			}
 			for(var e=0; e<battle_manager._explosions.length; e++) {
 				var explosion = battle_manager._explosions.pop();
 				
 				if(explosion["progress"]<=17) {
 					var explosion_img = new Image();
-					explosion_img.src = "img/explosion/explosion1-" + parseInt(explosion["progress"]);
+					explosion_img.src = "img/explosion/explosion1-" + parseInt(explosion["progress"])+'.png';
 					battle_manager._ctx.drawImage(explosion_img, explosion["x"]-64, explosion["y"]-64, 128, 128);
 					explosion["progress"]+= .1;
 					battle_manager._explosions.unshift(explosion);
@@ -369,8 +369,9 @@ $(document).ready(function() {
 		},
 	};
 	
-	BattleManager.init(ctx, ["js/scan-bot.js"]);
-	// BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js","js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js"]);
+//	BattleManager.init(ctx, ["js/scan-bot.js"]);
+//	BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js","js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js"]);
+	BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/scan-bot.js", "js/test-robot1.js", "js/test-robot2.js", "js/scan-bot.js"]);
 	BattleManager.run();
 	
 });
