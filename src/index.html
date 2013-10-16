@@ -1,9 +1,60 @@
-<html>
+<html ng-app="robojs">
     <head>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-        <script type="text/javascript" src="js/robotjs.js"></script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css">
+        
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/headjs/0.99/head.js"></script>
+        <script>
+            head.js(
+                "//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js",
+                "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js",
+                "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.js",
+                "//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js",
+                "//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js",
+                "js/robotjs.js",
+                "js/angular-app.js"
+            );
+        </script>
+
     </head>
-    <body>
-        <canvas style="border: 1px solid black;" width="800" height="400" id="canvas"></canvas>
+    <body ng-controller="RoboJSCtrl">
+        <h1>Robo.JS</h1>
+        <tabset>
+            <tab heading="Setup">
+                <div ng-show="addingRobot">
+                    <div class="form-group">
+                        <label for="robotType">Robot Type</label>
+                        <select id="robotType" ng-model="robotType">
+                            <option value="packaged">Packaged Robot</option>
+                        </select>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="pacakageRobot">Robot</label>
+                        <select id="pacakageRobot" ng-options="robot as robot.name for robot in robotOptions" ng-model="packageRobot"></select>
+                    </div>
+                    <button class="btn btn-primary" ng-click="addRobot()">Add</button>                    
+                </div>
+                
+                <div ng-show="!addingRobot">
+                    <strong>Robots in the Battle</strong>
+                    <table class="table table-striped table-bordered">
+                        <thead><tr><th>Robot</th></tr></thead>
+                        <tbody>
+                            <tr ng-repeat="robot in robots">
+                                <td>{{robot.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn" ng-click="addingRobot = true">Add</button>
+                    <button class="btn btn-primary" ng-click="startGame()">Start Game!</button>
+                </div>
+            </tab>
+            <tab heading="Arena" active="tabArenaActive">
+                <canvas style="border: 1px solid black;" width="800" height="400" id="canvas"></canvas>
+            </tab>
+            <tab heading="Workshop" active="tabWorkshipActive">
+                Coming Soon
+            </tab>
+          </tabset>
     </body>
 </html>
