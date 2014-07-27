@@ -371,7 +371,10 @@ $(document).ready(function() {
 	
 //	BattleManager.init(ctx, ["js/scan-bot.js"]);
 //	BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js","js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js"]);
-	BattleManager.init(ctx, ["js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js"]);
-	BattleManager.run();
+	//BattleManager.init(ctx, ["js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js"]);
+	//BattleManager.run();
+    
+    // Add it to the scope so we can control it from Angular
+    canvas.scope().BattleManager = BattleManager;
 	
 });
