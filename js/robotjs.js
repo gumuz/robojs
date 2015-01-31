@@ -27,8 +27,8 @@ $(document).ready(function() {
 	};
 	
 	
-	var ARENA_WIDTH = 800;
-	var ARENA_HEIGHT = 400;
+	var ARENA_WIDTH = canvas.width();
+	var ARENA_HEIGHT = canvas.height();
 	var ROBOT_SPEED = 1;
 	var BULLET_SPEED = 3;
 	
@@ -45,8 +45,8 @@ $(document).ready(function() {
 				var robot_id = "robot-" + w;
 				var robot = {
 					"id": robot_id,
-					"x": parseInt((ARENA_WIDTH-150)*Math.random()),
-					"y": parseInt((ARENA_HEIGHT-150)*Math.random()),
+					"x": parseInt((ARENA_WIDTH)*Math.random()),
+					"y": parseInt((ARENA_HEIGHT)*Math.random()),
 					"health": 50,
 					"direction": 40,
 					"turret_direction": 0,
@@ -154,14 +154,6 @@ $(document).ready(function() {
 								enemy_robot["x"], enemy_robot["y"]
 							) < 20;
 							
-							/*
-							var robot_collide = Utils.is_point_in_square(
-								robot["bullet"]["x"], robot["bullet"]["y"], 
-								enemy_robot["x"]-15, enemy_robot["y"]-15, 
-								30, 30
-							);
-							*/
-							
 							if(robot_hit) {
 								console.log("HIT!");
 								enemy_robot["health"] -= 3;
@@ -171,7 +163,6 @@ $(document).ready(function() {
 									"progress": 1
 								});
 								robot["bullet"] = null;
-								// throw robot["id"] + " HIT " + enemy_robot["id"];
 								break;
 							}
 						}
@@ -198,10 +189,6 @@ $(document).ready(function() {
 						
 							var new_x = robot["x"] + (event["distance"]>0?1:-1) * Math.cos(Utils.degree2radian(robot["direction"]));
 							var new_y = robot["y"] + (event["distance"]>0?1:-1) * Math.sin(Utils.degree2radian(robot["direction"]));
-							/*
-							var new_x = Math.round(robot["x"] + (event["distance"]>0?1:-1) * Math.cos(Utils.degree2radian(robot["direction"])));
-							var new_y = Math.round(robot["y"] + (event["distance"]>0?1:-1) * Math.sin(Utils.degree2radian(robot["direction"])));
-							*/
 							
 							var wall_collide = !Utils.is_point_in_square(
 								new_x, new_y, 
@@ -300,7 +287,7 @@ $(document).ready(function() {
 		_draw: function () {
 			var battle_manager = this;
 			
-			battle_manager._ctx.clearRect(0, 0, 800, 400);
+			battle_manager._ctx.clearRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
 			
 			
 			function draw_robot(ctx, robot) {
@@ -347,13 +334,11 @@ $(document).ready(function() {
 				battle_manager._ctx.closePath();
 				
 				battle_manager._ctx.strokeText(robot["id"] + " (" + robot["health"] + ")", robot["x"]-20,robot["y"]+35);
-//				/*
 				battle_manager._ctx.fillStyle = "green";
 				battle_manager._ctx.fillRect(robot["x"]-20,robot["y"]+35, robot["health"], 5);
 				battle_manager._ctx.fillStyle = "red";
 				battle_manager._ctx.fillRect(robot["x"]-20+robot["health"],robot["y"]+35, 25-robot["health"], 5);
 				battle_manager._ctx.fillStyle = "black";
-//				*/
 			}
 			for(var e=0; e<battle_manager._explosions.length; e++) {
 				var explosion = battle_manager._explosions.pop();
