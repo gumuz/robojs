@@ -45,8 +45,8 @@ $(document).ready(function() {
 				var robot_id = "robot-" + w;
 				var robot = {
 					"id": robot_id,
-					"x": parseInt((ARENA_WIDTH-150)*Math.random()),
-					"y": parseInt((ARENA_HEIGHT-150)*Math.random()),
+					"x": parseInt((ARENA_WIDTH)*Math.random()),
+					"y": parseInt((ARENA_HEIGHT)*Math.random()),
 					"health": 50,
 					"direction": 40,
 					"turret_direction": 0,
