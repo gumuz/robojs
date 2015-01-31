@@ -27,8 +27,8 @@ $(document).ready(function() {
 	};
 	
 	
-	var ARENA_WIDTH = 800;
-	var ARENA_HEIGHT = 400;
+	var ARENA_WIDTH = canvas.width();
+	var ARENA_HEIGHT = canvas.height();
 	var ROBOT_SPEED = 1;
 	var BULLET_SPEED = 3;
 	
@@ -300,7 +300,7 @@ $(document).ready(function() {
 		_draw: function () {
 			var battle_manager = this;
 			
-			battle_manager._ctx.clearRect(0, 0, 800, 400);
+			battle_manager._ctx.clearRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
 			
 			
 			function draw_robot(ctx, robot) {
