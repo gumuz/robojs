@@ -1,5 +1,7 @@
+var BattleManager, canvas, ctx;
 $(document).ready(function() {
-	var canvas = $("#canvas"), ctx = canvas[0].getContext("2d"); 
+	canvas = $("#canvas");
+	ctx = canvas[0].getContext("2d"); 
 	var robots = [], bullets = [];
 	
 	console.log = function(){};
@@ -32,7 +34,7 @@ $(document).ready(function() {
 	var ROBOT_SPEED = 1;
 	var BULLET_SPEED = 3;
 	
-	var BattleManager = {
+	BattleManager = {
 		_robots: {},
 		_explosions: [],
 		_ctx: null,
@@ -353,10 +355,5 @@ $(document).ready(function() {
 			}
 		},
 	};
-	
-//	BattleManager.init(ctx, ["js/scan-bot.js"]);
-//	BattleManager.init(ctx, ["js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js","js/test-robot1.js", "js/test-robot2.js", "js/test-robot1.js", "js/test-robot2.js"]);
-	BattleManager.init(ctx, ["js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js", "js/scan-bot.js"]);
-	BattleManager.run();
 	
 });

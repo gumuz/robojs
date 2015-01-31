@@ -1,9 +1,18 @@
 <html>
-    <head>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-        <script type="text/javascript" src="js/robotjs.js"></script>
-    </head>
-    <body>
-        <canvas style="border: 1px solid black;" width="800" height="600" id="canvas"></canvas>
-    </body>
+	<head>
+	</head>
+	<body>
+		<canvas style="border: 1px solid black;" width="800" height="600" id="canvas"></canvas>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/robotjs.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				BattleManager.init(ctx, [
+					"js/scan-bot.js", 
+					"bots/murilo-bot.js"
+				]);
+				BattleManager.run();
+			});
+		</script>
+	</body>
 </html>
